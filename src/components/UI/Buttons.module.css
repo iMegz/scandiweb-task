@@ -1,0 +1,85 @@
+/******************** START TYPE ********************/
+
+/* ButtonOutline */
+.btn-outline {
+    border: 1px solid var(--black);
+    background-color: transparent;
+    color: var(--black);
+    text-transform: uppercase;
+}
+.btn-outline:hover,
+.btn-outline.active {
+    background-color: var(--black);
+    color: white;
+}
+.btn-outline:hover path {
+    transition: all 0.3s;
+    stroke: white;
+}
+/* ButtonFill */
+.btn-fill {
+    border: 1px solid var(--base);
+    background-color: var(--base);
+    color: white;
+    text-transform: uppercase;
+}
+.btn-fill:hover {
+    background-color: var(--base-dark);
+    border: 1px solid var(--base-dark);
+}
+/* ButtonTransparent */
+.btn-transparent {
+    padding: 0.5rem 0.75rem;
+    border-radius: 0.5rem;
+    border: none;
+    background-color: transparent;
+    font-weight: 600;
+    font-size: 1rem;
+    position: relative;
+}
+.btn-transparent:hover {
+    background-color: var(--grey);
+}
+/* ButtonRounded */
+.btn-rounded {
+    width: 52px;
+    height: 52px;
+    border-radius: 50%;
+    border: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--base);
+}
+.btn-rounded:hover {
+    background-color: var(--base-dark);
+}
+/* ButtonColor */
+.btn-color {
+    border: 1px solid white;
+    padding: 2px;
+    width: 36px;
+    height: 36px;
+}
+.btn-color:hover,
+.btn-color.active {
+    border-color: var(--base);
+}
+/******************** END TYPE ********************/
+
+/******************** START SIZE ********************/
+.btn-small {
+    width: 24px;
+    height: 24px;
+    font-size: 1rem;
+}
+.btn-medium {
+    width: 45px;
+    height: 45px;
+    font-size: 2rem;
+}
+.btn-large {
+    padding: 16px 32px;
+    font-size: 1rem;
+}
+/******************** END SIZE ********************/
