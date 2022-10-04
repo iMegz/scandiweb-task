@@ -1,0 +1,117 @@
+/******************** START PRODUCTS LIST ********************/
+.h1 {
+    font-size: 42px;
+    font-weight: 400;
+    line-height: 67px;
+    text-transform: capitalize;
+    margin: 60px 0;
+}
+.products-list {
+    display: flex;
+    gap: 40px;
+    flex-wrap: wrap;
+    row-gap: 103px;
+}
+/******************** END PRODUCTS LIST ********************/
+
+/******************** START PRODUCT CARD ********************/
+.product-card {
+    width: 386px;
+    height: 444px;
+    padding: 16px;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+}
+.product-card img {
+    height: 330px;
+    width: 354px;
+    margin-bottom: 24px;
+}
+.product-card h2 {
+    font-size: 18px;
+    font-weight: 300;
+    line-height: 29px;
+}
+.product-card span {
+    font-size: 18px;
+    font-weight: 600;
+    line-height: 29px;
+}
+.out-of-stock {
+    opacity: 0.5;
+}
+.out-of-stock::after {
+    content: "OUT OF STOCK";
+    position: absolute;
+    font-size: 24px;
+    font-weight: 400;
+    line-height: 38px;
+    top: 162px;
+    left: 50%;
+    transform: translateX(-50%);
+}
+.product-card:hover {
+    box-shadow: 0px 4px 35px rgba(168, 172, 176, 0.19);
+    transform: translateY(-5px);
+    cursor: pointer;
+}
+.product-card:not(.out-of-stock):hover .add-to-cart-btn {
+    display: block;
+}
+.add-to-cart-btn {
+    position: absolute;
+    top: 320px;
+    right: 31px;
+    display: none;
+}
+/******************** END PRODUCT CARD ********************/
+
+/******************** START TEMP PRODUCT CARD ********************/
+.temp-product {
+    position: relative;
+    width: 386px;
+    height: 444px;
+    padding: 16px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+.temp-product span,
+.temp-product .temp-img {
+    background: linear-gradient(
+        to right,
+        rgb(236, 237, 238) 0%,
+        rgb(227, 228, 231) 20%,
+        rgb(236, 237, 238) 40%,
+        rgb(236, 237, 238) 100%
+    );
+    background-size: 800px 104px;
+    animation: shimmerEffect 1s forwards infinite linear;
+}
+.temp-img {
+    width: 100%;
+    height: 340px;
+}
+.temp-title {
+    height: 25px;
+    margin: 4px 0;
+    width: 80%;
+    display: block;
+}
+.temp-price {
+    height: 26.8px;
+    display: block;
+    width: 25%;
+}
+@keyframes shimmerEffect {
+    0% {
+        background-position: -468px 0;
+    }
+
+    100% {
+        background-position: 468px 0;
+    }
+}
+
+/******************** END TEMP PRODUCT CARD ********************/
