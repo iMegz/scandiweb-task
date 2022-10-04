@@ -9,11 +9,15 @@ class Button extends Component {
         this.className = null;
         this.children = props?.children;
     }
+    updateClassName() {
+        return this.className;
+    }
     render() {
         const onClick = this.props.onClick;
+        const className = this.updateClassName();
         return (
-            <button className={this.className} onClick={onClick}>
-                {this.children}
+            <button className={className} onClick={onClick}>
+                {this.props?.children || this.children}
             </button>
         );
     }
@@ -21,40 +25,32 @@ class Button extends Component {
 
 //Filled button
 export class ButtonFill extends Button {
-    constructor(props) {
-        super(props);
-        const btnSize = props.size || "large";
-        const className = `${style["btn-fill"]} ${style[`btn-${btnSize}`]}`;
-        this.className = className;
+    updateClassName() {
+        const btnSize = this.props.size || "large";
+        return `${style["btn-fill"]} ${style[`btn-${btnSize}`]}`;
     }
 }
 
 //Outlined button
 export class ButtonOutline extends Button {
-    constructor(props) {
-        super(props);
-        const btnSize = props.size || "large";
-        const isActive = props.active ? style.active : "";
-        const className = `${style["btn-outline"]} ${
-            style[`btn-${btnSize}`]
-        } ${isActive}`;
-        this.className = className;
+    updateClassName() {
+        const btnSize = this.props.size || "large";
+        const isActive = this.props.active ? style.active : "";
+        return `${style["btn-outline"]} ${style[`btn-${btnSize}`]} ${isActive}`;
     }
 }
 
 //Transparent button
 export class ButtonTransparent extends Button {
-    constructor(props) {
-        super(props);
-        this.className = style["btn-transparent"];
+    updateClassName() {
+        return style["btn-transparent"];
     }
 }
 
 //Rounded filled button
 export class ButtonRounded extends Button {
-    constructor(props) {
-        super(props);
-        this.className = style["btn-rounded"];
+    updateClassName() {
+        return style["btn-rounded"];
     }
 }
 

@@ -14,6 +14,7 @@ const dataSlice = createSlice({
         //Categories
         setCategories(state, { payload }) {
             state.category.categories = payload;
+            state.category.active = payload[0].name;
         },
         setActiveCategory(state, { payload }) {
             state.category.active = payload;
@@ -22,6 +23,7 @@ const dataSlice = createSlice({
         //Currencies
         setCurrencies(state, { payload }) {
             state.currency.currencies = payload;
+            state.currency.active = payload[0].symbol;
         },
         setActiveCurrency(state, { payload }) {
             state.currency.active = payload;

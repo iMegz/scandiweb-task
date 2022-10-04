@@ -33,9 +33,10 @@
     border-radius: 0.5rem;
     border: none;
     background-color: transparent;
-    font-weight: 600;
-    font-size: 1rem;
     position: relative;
+    font-size: 18px;
+    font-weight: 500;
+    line-height: 20px;
 }
 .btn-transparent:hover {
     background-color: var(--grey);
