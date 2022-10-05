@@ -7,6 +7,9 @@ import { ButtonTransparent } from "../UI/Buttons";
 import Arrow from "../UI/Arrow";
 import logo from "./logo.svg";
 import { CartIcon } from "../UI/Icons";
+import Bagde from "../UI/Bagde";
+
+import { Link } from "react-router-dom";
 
 export class Navbar extends Component {
     constructor() {
@@ -21,6 +24,12 @@ export class Navbar extends Component {
     showMiniCart() {}
 
     render() {
+        const cartBadge = this.props.cart.length ? (
+            <div className={style["cart-badge"]}>
+                <Bagde value={this.props.cart.length} />
+            </div>
+        ) : null;
+
         return (
             <nav className={style.navbar}>
                 <div>
@@ -41,9 +50,14 @@ export class Navbar extends Component {
                             <Arrow />
                         )}
                     </ButtonTransparent>
-                    <ButtonTransparent onClick={this.showMiniCart.bind(this)}>
-                        <CartIcon />
-                    </ButtonTransparent>
+                    <Link to="/cart">
+                        <ButtonTransparent
+                            onClick={this.showMiniCart.bind(this)}
+                        >
+                            {cartBadge}
+                            <CartIcon />
+                        </ButtonTransparent>
+                    </Link>
                 </div>
             </nav>
         );
@@ -53,6 +67,7 @@ const mapStateToProps = (state) => {
     return {
         category: state.data.category,
         currency: state.data.currency.active,
+        cart: state.cart,
     };
 };
 

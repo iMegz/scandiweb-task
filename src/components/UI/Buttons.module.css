@@ -56,26 +56,33 @@
     background-color: var(--base-dark);
 }
 /* ButtonColor */
-.btn-color {
+.btn-color-large {
     border: 1px solid white;
     padding: 2px;
     width: 36px;
     height: 36px;
 }
-.btn-color:hover,
-.btn-color.active {
+.btn-color-small {
+    border: 1px solid white;
+    padding: 2px;
+    width: 20px;
+    height: 20px;
+}
+.btn-color-small:hover,
+.btn-color-large:hover,
+.active {
     border-color: var(--base);
 }
 /******************** END TYPE ********************/
 
 /******************** START SIZE ********************/
 .btn-small {
-    width: 24px;
+    min-width: 24px;
     height: 24px;
     font-size: 1rem;
 }
 .btn-medium {
-    width: 45px;
+    min-width: 45px;
     height: 45px;
     font-size: 2rem;
 }

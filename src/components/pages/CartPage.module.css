@@ -1,0 +1,42 @@
+.holder {
+    padding: 80px 0;
+}
+.holder h1 {
+    font-size: 32px;
+    font-weight: 700;
+    line-height: 40px;
+    text-transform: uppercase;
+}
+.holder hr {
+    width: 100%;
+    height: 1px;
+    background-color: var(--grey);
+    margin: 55px 0 24px 0;
+}
+.cart-products {
+    display: flex;
+    flex-direction: column;
+}
+.empty-cart {
+    opacity: 0.5;
+    font-size: 24px;
+    font-weight: 400;
+    line-height: 38px;
+    text-transform: uppercase;
+}
+.summary {
+    font-size: 24px;
+    font-weight: 500;
+    line-height: 28px;
+    width: fit-content;
+    border-collapse: separate;
+    border-spacing: 0 8px;
+}
+.summary button {
+    width: 100%;
+}
+
+.summary-value {
+    font-weight: 700;
+    line-height: 24px;
+}

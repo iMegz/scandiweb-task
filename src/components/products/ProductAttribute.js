@@ -4,9 +4,11 @@ import style from "./ProductAttribute.module.css";
 
 export class ProductAttribute extends Component {
     swatchAttribute() {
-        const { id, items, value, changeAttribute } = this.props;
+        const { id, items, value, changeAttribute, size } = this.props;
+
         return items.map((item) => (
             <ButtonColor
+                size={size}
                 onClick={changeAttribute.bind(this, id, item.value)}
                 key={item.id}
                 active={item.value === value}
@@ -15,9 +17,11 @@ export class ProductAttribute extends Component {
         ));
     }
     textAttribute() {
-        const { id, items, value, changeAttribute } = this.props;
+        const { id, items, value, changeAttribute, size } = this.props;
+
         return items.map((item) => (
             <ButtonOutline
+                size={size}
                 onClick={changeAttribute.bind(this, id, item.value)}
                 key={item.id}
                 active={item.value === value}
@@ -28,9 +32,12 @@ export class ProductAttribute extends Component {
     }
     render() {
         const isSwatch = this.props.type === "swatch";
+        const size = this.props.size;
         return (
             <div className={style.attribute}>
-                <span>{this.props.name}:</span>
+                <span className={style[`attribute-title-${size}`]}>
+                    {this.props.name}:
+                </span>
                 <div className={style["attribute-values"]}>
                     {isSwatch ? this.swatchAttribute() : this.textAttribute()}
                 </div>

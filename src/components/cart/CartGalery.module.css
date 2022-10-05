@@ -1,0 +1,35 @@
+.cart-gallery {
+    margin-left: 24px;
+    min-height: 100%;
+    width: 120px;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: contain;
+    position: relative;
+}
+.cart-gallery-full {
+    width: 200px;
+}
+.cart-gallery img {
+    max-height: 100%;
+}
+
+.change-img-btns {
+    position: absolute;
+    bottom: 16px;
+    right: 16px;
+    display: flex;
+    gap: 8px;
+}
+.change-img-btns button {
+    width: 24px;
+    height: 24px;
+    background: rgba(0, 0, 0, 0.73);
+    border: none;
+}
+.change-img-btns button:hover {
+    background: rgba(0, 0, 0, 0.941);
+}
+.change-img-btns i {
+    border-color: white;
+}

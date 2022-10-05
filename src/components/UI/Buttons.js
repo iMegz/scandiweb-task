@@ -84,12 +84,12 @@ export class ButtonColor extends Component {
     }
 
     render() {
-        const { onClick, color, active } = this.props;
+        const { onClick, color, active, size } = this.props;
         const isActive = active ? style.active : "";
         return (
             <button
                 style={this.setBackground(color)}
-                className={`${style["btn-color"]} ${isActive}`}
+                className={`${style[`btn-color-${size}`]} ${isActive}`}
                 onClick={onClick}
             ></button>
         );
