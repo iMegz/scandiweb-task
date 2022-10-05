@@ -1,0 +1,13 @@
+.attribute {
+    font-size: 18px;
+    font-weight: 700;
+    line-height: 18px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    margin-bottom: 24px;
+}
+.attribute-values {
+    display: flex;
+    gap: 12px;
+}

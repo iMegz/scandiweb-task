@@ -1,0 +1,22 @@
+.gallery {
+    display: flex;
+    gap: 40px;
+}
+.images-section {
+    display: flex;
+    flex-direction: column;
+    gap: 32.4px;
+}
+.images-section img {
+    width: 80px;
+}
+.main-image {
+    height: 511px;
+    width: 610px;
+    box-shadow: 0px 4px 35px rgba(168, 172, 176, 0.19);
+}
+.active,
+.images-section img:hover {
+    cursor: pointer;
+    box-shadow: 0px 4px 35px rgba(168, 172, 176, 0.19);
+}
