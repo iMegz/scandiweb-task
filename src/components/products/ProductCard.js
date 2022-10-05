@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { Navigate } from "react-router-dom";
 import { ButtonRounded } from "../UI/Buttons";
 import { CartIcon } from "../UI/Icons";
-import style from "./ProductsList.module.css";
+import style from "./ProductCard.module.css";
 
 export class ProductCard extends Component {
     constructor() {
