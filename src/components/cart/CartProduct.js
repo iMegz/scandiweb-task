@@ -3,7 +3,7 @@ import { connect } from "react-redux";
 import ProductAmount from "../products/ProductAmount";
 import ProductInfo from "../products/ProductInfo";
 import { cartActions } from "../store/cartSlice";
-import CartGalery from "./CartGalery";
+import CartGalery from "./CartGallery";
 
 export class CartProduct extends Component {
     changeAttribute(attrId, value) {

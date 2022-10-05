@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import style from "./CartGalery.module.css";
 import Arrow from "../UI/Arrow";
 
-export class CartGalery extends Component {
+export class CartGallery extends Component {
     constructor(props) {
         super(props);
         this.state = {
@@ -36,20 +36,20 @@ export class CartGalery extends Component {
         );
     }
     render() {
-        const productName = this.props.productName;
         const full = this.props.full;
+        const productName = this.props.productName;
         const size = full ? style["cart-gallery-full"] : "";
         const backgroundImage = `url("${this.state.img}")`;
         return (
             <div
+                title={productName}
                 style={{ backgroundImage }}
                 className={`${style["cart-gallery"]} ${size}`}
             >
-                {/* <img src={this.state.img} alt={productName} /> */}
                 {full && this.changeImgBtns()}
             </div>
         );
     }
 }
 
-export default CartGalery;
+export default CartGallery;

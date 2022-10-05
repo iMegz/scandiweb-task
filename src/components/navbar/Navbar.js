@@ -10,6 +10,7 @@ import { CartIcon } from "../UI/Icons";
 import Bagde from "../UI/Bagde";
 
 import { Link } from "react-router-dom";
+import CurrencySelector from "./CurrencySelector";
 
 export class Navbar extends Component {
     constructor() {
@@ -19,7 +20,10 @@ export class Navbar extends Component {
         };
     }
 
-    selectCurrency() {}
+    selectCurrency() {
+        const selectingCurrency = !this.state.selectingCurrency;
+        this.setState({ selectingCurrency });
+    }
 
     showMiniCart() {}
 
@@ -49,6 +53,7 @@ export class Navbar extends Component {
                         ) : (
                             <Arrow />
                         )}
+                        {this.state.selectingCurrency && <CurrencySelector />}
                     </ButtonTransparent>
                     <Link to="/cart">
                         <ButtonTransparent
