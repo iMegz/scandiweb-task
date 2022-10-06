@@ -15,17 +15,22 @@ import CurrencySelector from "./CurrencySelector";
 export class Navbar extends Component {
     constructor() {
         super();
-        this.state = {
-            selectingCurrency: false,
-        };
+        this.state = { selectingCurrency: false, miniCart: false };
     }
 
-    selectCurrency() {
-        const selectingCurrency = !this.state.selectingCurrency;
-        this.setState({ selectingCurrency });
+    selectCurrency(id) {
+        if (!id) {
+            const selectingCurrency = !this.state.selectingCurrency;
+            this.setState({ selectingCurrency, miniCart: false });
+        }
     }
 
-    showMiniCart() {}
+    showMiniCart(id) {
+        if (!id) {
+            const miniCart = !this.state.miniCart;
+            this.setState({ miniCart, selectingCurrency: false });
+        }
+    }
 
     render() {
         const cartBadge = this.props.cart.length ? (
@@ -46,18 +51,26 @@ export class Navbar extends Component {
                     <img className={style.logo} src={logo} alt="logo" />
                 </div>
                 <div>
-                    <ButtonTransparent onClick={this.selectCurrency.bind(this)}>
+                    <ButtonTransparent
+                        id="currency"
+                        onClick={this.selectCurrency.bind(this, null)}
+                    >
                         {this.props.currency}{" "}
                         {this.state.selectingCurrency ? (
                             <Arrow dir="up" />
                         ) : (
                             <Arrow />
                         )}
-                        {this.state.selectingCurrency && <CurrencySelector />}
+                        {this.state.selectingCurrency && (
+                            <CurrencySelector
+                                hide={this.selectCurrency.bind(this)}
+                            />
+                        )}
                     </ButtonTransparent>
                     <Link to="/cart">
                         <ButtonTransparent
-                            onClick={this.showMiniCart.bind(this)}
+                            id="miniCart"
+                            onClick={this.showMiniCart.bind(this, null)}
                         >
                             {cartBadge}
                             <CartIcon />

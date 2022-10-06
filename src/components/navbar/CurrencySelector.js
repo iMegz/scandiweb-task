@@ -1,12 +1,13 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import { dataActions } from "../store/dataSlice";
+import Dropdown from "../UI/Dropdown";
 import style from "./CurrencySelector.module.css";
 
-export class CurrencySelector extends Component {
+export class CurrencySelector extends Dropdown {
     render() {
         return (
-            <div className={style["currency-selector"]}>
+            <div ref={this.wrapperRef} className={style["currency-selector"]}>
                 {this.props.currencies.map(({ symbol, label }) => (
                     <div
                         onClick={this.props.changeCurrency.bind(this, symbol)}

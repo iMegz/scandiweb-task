@@ -51,27 +51,31 @@ export class CartPage extends Component {
             const tax = (total * 0.21).toFixed(2);
             return (
                 <table className={style.summary}>
-                    <tr>
-                        <td>Tax 21%: </td>
-                        <td className={style["summary-value"]}>
-                            {`${this.props.currency} ${tax}`}
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>Quantity: </td>
-                        <td className={style["summary-value"]}>{quantity}</td>
-                    </tr>
-                    <tr>
-                        <td>Total: </td>
-                        <td className={style["summary-value"]}>
-                            {`${this.props.currency} ${total.toFixed(2)}`}
-                        </td>
-                    </tr>
-                    <tr>
-                        <td colSpan="2">
-                            <ButtonFill>order</ButtonFill>
-                        </td>
-                    </tr>
+                    <tbody>
+                        <tr>
+                            <td>Tax 21%: </td>
+                            <td className={style["summary-value"]}>
+                                {`${this.props.currency} ${tax}`}
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Quantity: </td>
+                            <td className={style["summary-value"]}>
+                                {quantity}
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Total: </td>
+                            <td className={style["summary-value"]}>
+                                {`${this.props.currency} ${total.toFixed(2)}`}
+                            </td>
+                        </tr>
+                        <tr>
+                            <td colSpan="2">
+                                <ButtonFill>order</ButtonFill>
+                            </td>
+                        </tr>
+                    </tbody>
                 </table>
             );
         }

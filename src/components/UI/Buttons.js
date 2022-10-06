@@ -16,7 +16,7 @@ class Button extends Component {
         const onClick = this.props.onClick;
         const className = this.updateClassName();
         return (
-            <button className={className} onClick={onClick}>
+            <button id={this.props.id} className={className} onClick={onClick}>
                 {this.props?.children || this.children}
             </button>
         );
