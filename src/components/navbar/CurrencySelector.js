@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React from "react";
 import { connect } from "react-redux";
 import { dataActions } from "../store/dataSlice";
 import Dropdown from "../UI/Dropdown";

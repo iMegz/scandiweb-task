@@ -56,7 +56,7 @@ export class Product extends Component {
         } else {
             const attributes = this.state.attributes.map((attr) => {
                 const newAttr = attr;
-                if (attr.id == attrId) newAttr.value = value;
+                if (attr.id === attrId) newAttr.value = value;
                 return newAttr;
             });
             this.setState({ attributes });

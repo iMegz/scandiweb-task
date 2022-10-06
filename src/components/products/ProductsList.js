@@ -1,4 +1,3 @@
-import { compose } from "@reduxjs/toolkit";
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import { getProductsByCategory } from "../GraphQL/queries";
