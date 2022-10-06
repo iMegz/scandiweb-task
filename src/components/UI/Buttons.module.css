@@ -80,6 +80,7 @@
     min-width: 24px;
     height: 24px;
     font-size: 1rem;
+    padding: 2px;
 }
 .btn-medium {
     min-width: 45px;

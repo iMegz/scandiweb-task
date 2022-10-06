@@ -6,7 +6,7 @@ import Navbar from "./components/navbar/Navbar";
 import CartPage from "./components/pages/CartPage";
 import ProductsPage from "./components/pages/ProductsPage";
 import { dataActions } from "./components/store/dataSlice";
-import Container from "./components/UI/Container";
+import { cartActions } from "./components/store/cartSlice";
 
 class App extends Component {
     componentDidMount() {
@@ -16,6 +16,9 @@ class App extends Component {
         getCurrencies().then(({ data }) =>
             this.props.setCurrencies(data.currencies)
         );
+        window.addEventListener("beforeunload", () => {
+            this.props.storeCart();
+        });
     }
     render() {
         return (
@@ -36,6 +39,12 @@ const mapDispatchToProps = {
     },
     setCurrencies(currencies) {
         return dataActions.setCurrencies(currencies);
+    },
+    storeCart() {
+        return cartActions.storeCart();
+    },
+    initCart() {
+        return cartActions.initCart();
     },
 };
 export default connect(null, mapDispatchToProps)(App);

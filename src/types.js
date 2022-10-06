@@ -69,5 +69,4 @@
  * @property {Object} currency
  * @property {[Currency]} currency.currencies
  * @property {String} currency.active
- * @property {[Product]} products
  */

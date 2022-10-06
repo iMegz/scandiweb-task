@@ -1,7 +1,9 @@
 import React, { Component } from "react";
+import { connect } from "react-redux";
 import { Navigate } from "react-router-dom";
 import { ButtonRounded } from "../UI/Buttons";
 import { CartIcon } from "../UI/Icons";
+import { cartActions } from "../store/cartSlice";
 import style from "./ProductCard.module.css";
 
 export class ProductCard extends Component {
@@ -14,8 +16,21 @@ export class ProductCard extends Component {
     showProduct() {
         this.setState({ showProduct: true });
     }
-    showCartModal(e) {
+    addToCart(e) {
         e.stopPropagation();
+        const { id, attributes } = this.props;
+        const attributesInCart = attributes.map((attr) => {
+            return {
+                id: attr.id,
+                value: attr.items[0].value,
+            };
+        });
+        const product = {
+            id,
+            amount: 1,
+            attributes: attributesInCart,
+        };
+        this.props.addToCart(product);
     }
     render() {
         const { id, brand, name, gallery, inStock, prices, currency } =
@@ -34,7 +49,7 @@ export class ProductCard extends Component {
             <div className={className} onClick={this.showProduct.bind(this)}>
                 {this.state.showProduct && <Navigate to={id} />}
                 <div className={style["add-to-cart-btn"]}>
-                    <ButtonRounded onClick={this.showCartModal.bind(this)}>
+                    <ButtonRounded onClick={this.addToCart.bind(this)}>
                         <CartIcon color="#ffffff" />
                     </ButtonRounded>
                 </div>
@@ -59,5 +74,9 @@ export class ProductCardTemp extends Component {
         );
     }
 }
-
-export default ProductCard;
+const mapDispatchToProps = {
+    addToCart(product) {
+        return cartActions.addToCart(product);
+    },
+};
+export default connect(null, mapDispatchToProps)(ProductCard);

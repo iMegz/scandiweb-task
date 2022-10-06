@@ -4,7 +4,6 @@ import { createSlice } from "@reduxjs/toolkit";
 const initialState = {
     category: { categories: [], active: "" },
     currency: { currencies: [], active: "" },
-    products: [],
 };
 
 const dataSlice = createSlice({
@@ -27,11 +26,6 @@ const dataSlice = createSlice({
         },
         setActiveCurrency(state, { payload }) {
             state.currency.active = payload;
-        },
-
-        //Products
-        setProducts(state, { payload }) {
-            state.products = payload;
         },
     },
 });

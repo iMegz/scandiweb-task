@@ -31,7 +31,7 @@ export class CartIcon extends Component {
 export class PlusIcon extends Component {
     render() {
         const color = this.props.color || "#43464E";
-        const size = this.props.size === "small" ? "22" : "43";
+        const size = this.props.size === "small" ? "20" : "43";
         return (
             <svg
                 width={size}
@@ -62,7 +62,7 @@ export class PlusIcon extends Component {
 export class MinusIcon extends Component {
     render() {
         const color = this.props.color || "#43464E";
-        const size = this.props.size === "small" ? "22" : "43";
+        const size = this.props.size === "small" ? "20" : "43";
         return (
             <svg
                 width={size}
