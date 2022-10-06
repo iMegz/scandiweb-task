@@ -1,10 +1,9 @@
 .currency-selector {
     position: absolute;
-    z-index: 2;
+    z-index: 20;
     top: 36px;
     left: 0;
     width: 114px;
-    border-radius: 0px;
     font-size: 18px;
     font-weight: 500;
     line-height: 29px;

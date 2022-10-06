@@ -24,7 +24,11 @@ export class CartLogic extends Component {
     displayProducts(mini) {
         if (this.state.products && this.props.cart.length) {
             return this.props.cart.map(({ id }) => (
-                <CartProduct key={id} product={this.state.products[id]} />
+                <CartProduct
+                    mini={mini}
+                    key={id}
+                    product={this.state.products[id]}
+                />
             ));
         }
         const style = {
@@ -39,21 +43,23 @@ export class CartLogic extends Component {
     }
 
     cartSummary() {
-        const { total, quantity } = this.props.cart.reduce(
-            (prev, current) => {
-                const product = this.state.products[current.id];
-                const price = product.prices.find(
-                    (p) => p.currency.symbol === this.props.currency
-                )?.amount;
-                const total = prev.total + price * current.amount;
-                const quantity = prev.quantity + current.amount;
+        if (this.props.cart && this.state.products) {
+            const { total, quantity } = this.props.cart.reduce(
+                (prev, current) => {
+                    const product = this.state.products[current.id];
+                    const price = product.prices.find(
+                        (p) => p.currency.symbol === this.props.currency
+                    )?.amount;
+                    const total = prev.total + price * current.amount;
+                    const quantity = prev.quantity + current.amount;
 
-                return { total, quantity };
-            },
-            { total: 0, quantity: 0 }
-        );
-        const tax = (total * 0.21).toFixed(2);
-        return { total: total.toFixed(2), tax, quantity };
+                    return { total, quantity };
+                },
+                { total: 0, quantity: 0 }
+            );
+            const tax = (total * 0.21).toFixed(2);
+            return { total: total.toFixed(2), tax, quantity };
+        }
     }
 }
 export const mapStateToProps = (state) => {

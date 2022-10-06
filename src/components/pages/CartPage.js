@@ -1,9 +1,8 @@
-import React, { Component } from "react";
+import React from "react";
 import { connect } from "react-redux";
-import CartLogic from "../cart/CartLogic";
-import CartProduct from "../cart/CartProduct";
-import { getProduct } from "../GraphQL/queries";
+import CartLogic, { mapStateToProps } from "../cart/CartLogic";
 import { ButtonFill } from "../UI/Buttons";
+import Container from "../UI/Container";
 import style from "./CartPage.module.css";
 
 export class CartPage extends CartLogic {
@@ -44,18 +43,20 @@ export class CartPage extends CartLogic {
 
     render() {
         return (
-            <div className={style.holder}>
-                <h1>Cart</h1>
-                <hr />
-                <div className={style["cart-products"]}>
-                    {this.displayProducts()}
-                </div>
-                {this.displayCartSummary()}
+            <div>
+                <Container>
+                    <div className={style.holder}>
+                        <h1>Cart</h1>
+                        <hr />
+                        <div className={style["cart-products"]}>
+                            {this.displayProducts()}
+                        </div>
+                        {this.displayCartSummary()}
+                    </div>
+                </Container>
             </div>
         );
     }
 }
-const mapStateToProps = (state) => {
-    return { cart: state.cart, currency: state.data.currency.active };
-};
+
 export default connect(mapStateToProps)(CartPage);

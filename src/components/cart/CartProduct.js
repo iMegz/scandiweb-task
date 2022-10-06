@@ -36,7 +36,7 @@ export class CartProduct extends Component {
                         gallery={product.gallery}
                     />
                 </div>
-                <hr></hr>
+                {!mini && <hr></hr>}
             </>
         );
     }

@@ -33,12 +33,13 @@ export class ProductAttribute extends Component {
     render() {
         const isSwatch = this.props.type === "swatch";
         const size = this.props.size;
+        const smallClassName = size === "small" ? "-small" : "";
         return (
             <div className={style.attribute}>
                 <span className={style[`attribute-title-${size}`]}>
                     {this.props.name}:
                 </span>
-                <div className={style["attribute-values"]}>
+                <div className={style[`attribute-values${smallClassName}`]}>
                     {isSwatch ? this.swatchAttribute() : this.textAttribute()}
                 </div>
             </div>

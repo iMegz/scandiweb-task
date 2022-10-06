@@ -13,6 +13,10 @@
     display: flex;
     gap: 12px;
 }
+.attribute-values-small {
+    display: flex;
+    gap: 8px;
+}
 
 .attribute-title-large {
     font-size: 18px;

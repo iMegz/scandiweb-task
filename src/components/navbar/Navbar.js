@@ -8,9 +8,10 @@ import Arrow from "../UI/Arrow";
 import logo from "./logo.svg";
 import { CartIcon } from "../UI/Icons";
 import Bagde from "../UI/Bagde";
-
-import { Link } from "react-router-dom";
+import Container from "../UI/Container";
 import CurrencySelector from "./CurrencySelector";
+import MiniCartDropdown from "../cart/MiniCartDropdown";
+import { Overlay } from "../UI/Overlay";
 
 export class Navbar extends Component {
     constructor() {
@@ -40,44 +41,55 @@ export class Navbar extends Component {
         ) : null;
 
         return (
-            <nav className={style.navbar}>
-                <div>
-                    <NavLinks
-                        {...this.props.category}
-                        setActiveCategory={this.props.setActiveCategory}
-                    />
-                </div>
-                <div>
-                    <img className={style.logo} src={logo} alt="logo" />
-                </div>
-                <div>
-                    <ButtonTransparent
-                        id="currency"
-                        onClick={this.selectCurrency.bind(this, null)}
-                    >
-                        {this.props.currency}{" "}
-                        {this.state.selectingCurrency ? (
-                            <Arrow dir="up" />
-                        ) : (
-                            <Arrow />
-                        )}
-                        {this.state.selectingCurrency && (
-                            <CurrencySelector
-                                hide={this.selectCurrency.bind(this)}
+            <div>
+                <Container>
+                    <nav className={style.navbar}>
+                        <div>
+                            <NavLinks
+                                {...this.props.category}
+                                setActiveCategory={this.props.setActiveCategory}
                             />
-                        )}
-                    </ButtonTransparent>
-                    <Link to="/cart">
-                        <ButtonTransparent
-                            id="miniCart"
-                            onClick={this.showMiniCart.bind(this, null)}
-                        >
-                            {cartBadge}
-                            <CartIcon />
-                        </ButtonTransparent>
-                    </Link>
-                </div>
-            </nav>
+                        </div>
+                        <div>
+                            <img className={style.logo} src={logo} alt="logo" />
+                        </div>
+                        <div>
+                            <ButtonTransparent
+                                id="currency"
+                                onClick={this.selectCurrency.bind(this, null)}
+                            >
+                                {this.props.currency}{" "}
+                                {this.state.selectingCurrency ? (
+                                    <Arrow dir="up" />
+                                ) : (
+                                    <Arrow />
+                                )}
+                                {this.state.selectingCurrency && (
+                                    <CurrencySelector
+                                        hide={this.selectCurrency.bind(this)}
+                                    />
+                                )}
+                            </ButtonTransparent>
+
+                            <ButtonTransparent
+                                id="miniCart"
+                                onClick={this.showMiniCart.bind(this, null)}
+                            >
+                                {cartBadge}
+                                <CartIcon />
+                            </ButtonTransparent>
+                            {this.state.miniCart && (
+                                <>
+                                    <MiniCartDropdown
+                                        hide={this.showMiniCart.bind(this)}
+                                    />
+                                    <Overlay />
+                                </>
+                            )}
+                        </div>
+                    </nav>
+                </Container>
+            </div>
         );
     }
 }

@@ -19,14 +19,14 @@ class App extends Component {
     }
     render() {
         return (
-            <Container>
+            <>
                 <Navbar />
                 <Routes>
                     <Route index element={<Navigate to="/products" />} />
                     <Route path="products/*" element={<ProductsPage />} />
                     <Route path="cart" element={<CartPage />} />
                 </Routes>
-            </Container>
+            </>
         );
     }
 }
