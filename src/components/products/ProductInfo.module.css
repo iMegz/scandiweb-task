@@ -17,17 +17,23 @@
     line-height: 27px;
     margin-bottom: 43px;
 }
-.product-info p {
+.product-info.small h1,
+.product-info.small h2 {
     font-size: 16px;
-    font-weight: 400;
-    line-height: 26px;
-    margin-top: 40px;
+    font-weight: 300 !important;
+    line-height: 25px;
+    margin-bottom: 6px;
 }
 .product-price {
     font-size: 24px;
     font-weight: 700;
     line-height: 18px;
     margin-bottom: 20px;
+}
+.product-info.small .product-price {
+    font-size: 16px;
+    font-weight: 600;
+    line-height: 26px;
 }
 .price-title {
     margin-top: 36px;

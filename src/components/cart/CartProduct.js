@@ -14,6 +14,7 @@ export class CartProduct extends Component {
     render() {
         const product = this.props.product;
         const inCart = this.props.cart.find((p) => p.id === product.id);
+        const mini = this.props.mini;
         return (
             <>
                 <div style={{ display: "flex", overflow: "hidden" }}>
@@ -21,12 +22,16 @@ export class CartProduct extends Component {
                         product={product}
                         changeAttribute={this.changeAttribute.bind(this)}
                         stateAttributes={inCart.attributes}
-                        priceSection={false}
+                        priceSection={!mini}
+                        size={mini ? "small" : "large"}
                     />
                     <div style={{ flexGrow: 1 }}></div>
-                    <ProductAmount id={product.id} />
+                    <ProductAmount
+                        size={mini ? "small" : "medium"}
+                        id={product.id}
+                    />
                     <CartGalery
-                        full={true}
+                        full={!mini}
                         productName={product.name}
                         gallery={product.gallery}
                     />

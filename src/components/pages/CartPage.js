@@ -1,54 +1,15 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
+import CartLogic from "../cart/CartLogic";
 import CartProduct from "../cart/CartProduct";
 import { getProduct } from "../GraphQL/queries";
 import { ButtonFill } from "../UI/Buttons";
 import style from "./CartPage.module.css";
 
-export class CartPage extends Component {
-    constructor() {
-        super();
-        this.state = {
-            products: null,
-        };
-    }
-    componentDidMount() {
-        const cart = this.props.cart;
-        const queries = cart.map((product) => getProduct(product.id));
-        Promise.all(queries).then((result) => {
-            const products = {};
-            result.forEach(
-                ({ data }) => (products[data.product.id] = data.product)
-            );
-            this.setState({ products });
-        });
-    }
-
-    displayProducts() {
-        if (this.state.products && this.props.cart.length) {
-            return this.props.cart.map(({ id }) => (
-                <CartProduct key={id} product={this.state.products[id]} />
-            ));
-        }
-        return <div className={style["empty-cart"]}>Your cart is empty</div>;
-    }
-
-    cartSummary() {
+export class CartPage extends CartLogic {
+    displayCartSummary() {
         if (this.props.cart.length && this.state.products) {
-            const { total, quantity } = this.props.cart.reduce(
-                (prev, current) => {
-                    const product = this.state.products[current.id];
-                    const price = product.prices.find(
-                        (p) => p.currency.symbol === this.props.currency
-                    )?.amount;
-                    const total = prev.total + price * current.amount;
-                    const quantity = prev.quantity + current.amount;
-
-                    return { total, quantity };
-                },
-                { total: 0, quantity: 0 }
-            );
-            const tax = (total * 0.21).toFixed(2);
+            const { total, tax, quantity } = this.cartSummary();
             return (
                 <table className={style.summary}>
                     <tbody>
@@ -67,7 +28,7 @@ export class CartPage extends Component {
                         <tr>
                             <td>Total: </td>
                             <td className={style["summary-value"]}>
-                                {`${this.props.currency} ${total.toFixed(2)}`}
+                                {`${this.props.currency} ${total}`}
                             </td>
                         </tr>
                         <tr>
@@ -89,7 +50,7 @@ export class CartPage extends Component {
                 <div className={style["cart-products"]}>
                     {this.displayProducts()}
                 </div>
-                {this.cartSummary()}
+                {this.displayCartSummary()}
             </div>
         );
     }

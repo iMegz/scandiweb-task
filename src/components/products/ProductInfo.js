@@ -18,8 +18,9 @@ export class ProductInfo extends Component {
         const { name, brand, attributes } = this.props.product;
         const { stateAttributes, changeAttribute, priceSection } = this.props;
         const size = this.props.size || "large";
+        const sizeClass = size === "small" ? style.small : "";
         return (
-            <div className={style["product-info"]}>
+            <div className={`${style["product-info"]} ${sizeClass}`}>
                 <h1>{brand}</h1>
                 <h2>{name}</h2>
                 {!priceSection && this.price()}
