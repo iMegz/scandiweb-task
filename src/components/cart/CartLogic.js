@@ -9,25 +9,39 @@ export class CartLogic extends Component {
             products: null,
         };
     }
+    // componentDidMount() {
+    //     const cart = this.props.cart;
+    //     const queries = cart.map((product) => getProduct(product.id));
+    //     Promise.all(queries).then((result) => {
+    //         const products = {};
+    //         result.forEach(
+    //             ({ data }) => (products[data.product.id] = data.product)
+    //         );
+    //         this.setState({ products });
+    //     });
+    // }
+
     componentDidMount() {
         const cart = this.props.cart;
         const queries = cart.map((product) => getProduct(product.id));
         Promise.all(queries).then((result) => {
             const products = {};
-            result.forEach(
-                ({ data }) => (products[data.product.id] = data.product)
-            );
+            result.forEach(({ data }, i) => {
+                const cartId = cart[i].cartId;
+                products[cartId] = { ...data.product };
+                products[cartId].cartId = cartId;
+            });
             this.setState({ products });
         });
     }
 
     displayProducts(mini) {
         if (this.state.products && this.props.cart.length) {
-            return this.props.cart.map(({ id }) => (
+            return this.props.cart.map(({ cartId }) => (
                 <CartProduct
                     mini={mini}
-                    key={id}
-                    product={this.state.products[id]}
+                    key={cartId}
+                    product={this.state.products[cartId]}
                 />
             ));
         }
@@ -46,7 +60,7 @@ export class CartLogic extends Component {
         if (this.props.cart && this.state.products) {
             const { total, quantity } = this.props.cart.reduce(
                 (prev, current) => {
-                    const product = this.state.products[current.id];
+                    const product = this.state.products[current.cartId];
                     const price = product.prices.find(
                         (p) => p.currency.symbol === this.props.currency
                     )?.amount;

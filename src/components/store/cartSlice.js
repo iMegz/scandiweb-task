@@ -30,14 +30,15 @@ const cartSlice = createSlice({
 
         //Change product attribute
         changeAttribute(state, { payload }) {
-            const { productId, attrId, value } = payload;
-            const product = state.find((p) => p.id === productId);
+            const { attrId, value, cartId } = payload;
+            const product = state.find((p) => p.cartId === cartId);
             const attribute = product.attributes.find((a) => a.id === attrId);
             attribute.value = value;
         },
 
         //Add new product to the cart
         addToCart(state, { payload }) {
+            payload.cartId = `${payload.id}-${Date.now()}`;
             state.push(payload);
         },
     },

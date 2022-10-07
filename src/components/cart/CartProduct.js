@@ -7,13 +7,18 @@ import CartGalery from "./CartGallery";
 
 export class CartProduct extends Component {
     changeAttribute(attrId, value) {
-        const payload = { productId: this.props.product.id, attrId, value };
+        const payload = {
+            cartId: this.props.product.cartId,
+            productId: this.props.product.id,
+            attrId,
+            value,
+        };
         this.props.changeAttribute(payload);
     }
 
     render() {
         const product = this.props.product;
-        const inCart = this.props.cart.find((p) => p.id === product.id);
+        const inCart = this.props.cart.find((p) => p.cartId === product.cartId);
         const mini = this.props.mini;
         return (
             <>
