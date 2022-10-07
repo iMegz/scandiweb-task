@@ -32,6 +32,7 @@ const cartSlice = createSlice({
         //Change product attribute
         changeAttribute(state, { payload }) {
             const { attrId, value, cartId } = payload;
+            console.log(cartId);
             const product = state.find((p) => p.cartId === cartId);
             const attribute = product.attributes.find((a) => a.id === attrId);
             attribute.value = value;

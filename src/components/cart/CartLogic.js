@@ -9,17 +9,6 @@ export class CartLogic extends Component {
             products: null,
         };
     }
-    // componentDidMount() {
-    //     const cart = this.props.cart;
-    //     const queries = cart.map((product) => getProduct(product.id));
-    //     Promise.all(queries).then((result) => {
-    //         const products = {};
-    //         result.forEach(
-    //             ({ data }) => (products[data.product.id] = data.product)
-    //         );
-    //         this.setState({ products });
-    //     });
-    // }
 
     componentDidMount() {
         const cart = this.props.cart;

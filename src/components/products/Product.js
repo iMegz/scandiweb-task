@@ -1,8 +1,7 @@
-import { compose } from "@reduxjs/toolkit";
+//THIS CODE IS NOT OPTIMIZED AND IT IS A REAL MESS FOR NOW
+//but it works 🥺👉👈
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import withRouter from "../HOC/withRouter";
-import { getProduct } from "../GraphQL/queries";
 import { cartActions } from "../store/cartSlice";
 import style from "./Product.module.css";
 import Gallery from "./Gallery";
@@ -11,47 +10,34 @@ import ProductInfo from "./ProductInfo";
 import ProductAmount from "./ProductAmount";
 
 export class Product extends Component {
-    constructor() {
-        super();
+    constructor(props) {
+        super(props);
+        console.log(props);
         this.state = {
-            product: null,
-            inCart: null,
-            attributes: [],
+            attributes: props.product.attributes.map(({ id, items }) => {
+                return { id, value: items[0].value };
+            }),
         };
     }
 
     componentDidMount() {
-        const productId = this.props.params.productId;
-        getProduct(productId).then(({ data }) => {
-            const { inCart, attributes } = this.cartData(data.product);
-            this.setState({ product: data.product, inCart, attributes });
-        });
-    }
-
-    componentDidUpdate(prevProps, prevState) {
-        if (prevProps.cart !== this.props.cart) {
-            const { inCart, attributes } = this.cartData(this.state.product);
-            this.setState({ inCart, attributes });
+        if (this.props.inCart) {
+            this.setState({ attributes: this.props.inCart.attributes });
         }
     }
 
-    cartData(product) {
-        const id = this.props.params.productId;
-        const inCart = this.props.cart.find((p) => p.id === id);
-        const attributes = inCart
-            ? inCart.attributes
-            : product.attributes.map(({ id, items }) => {
-                  return {
-                      id,
-                      value: items[0].value,
-                  };
-              });
-        return { inCart, attributes };
+    componentDidUpdate(prevProps) {
+        if (prevProps.cart !== this.props.cart && this.props.inCart) {
+            const attributes = this.props.cart.find(
+                (p) => p.cartId === this.props.inCart.cartId
+            ).attributes;
+            this.setState({ attributes });
+        }
     }
 
     changeAttribute(attrId, value) {
-        if (this.state.inCart) {
-            const payload = { productId: this.state.product.id, attrId, value };
+        if (this.props.inCart) {
+            const payload = { cartId: this.props.inCart.cartId, attrId, value };
             this.props.changeAttribute(payload);
         } else {
             const attributes = this.state.attributes.map((attr) => {
@@ -64,7 +50,7 @@ export class Product extends Component {
     }
 
     addToCart() {
-        const id = this.state.product.id;
+        const id = this.props.product.id;
         const productForCart = {
             id,
             amount: 1,
@@ -74,10 +60,10 @@ export class Product extends Component {
     }
 
     addToCartBtn() {
-        if (!this.state.product.inStock) {
+        if (!this.props.product.inStock) {
             return <span className={style["out-of-stock"]}>OUT OF STOCK</span>;
-        } else if (this.state.inCart) {
-            return <ProductAmount id={this.state.product.id} dir="row" />;
+        } else if (this.props.inCart) {
+            return <ProductAmount id={this.props.inCart.cartId} dir="row" />;
         } else {
             return (
                 <ButtonFill onClick={this.addToCart.bind(this)}>
@@ -88,16 +74,16 @@ export class Product extends Component {
     }
 
     displayProduct() {
-        if (this.state.product) {
+        if (this.props.product) {
             return (
                 <>
                     <Gallery
-                        gallery={this.state.product.gallery}
-                        productName={this.state.product.name}
+                        gallery={this.props.product.gallery}
+                        productName={this.props.product.name}
                     />
                     <div className={style["product-info-section"]}>
                         <ProductInfo
-                            product={this.state.product}
+                            product={this.props.product}
                             changeAttribute={this.changeAttribute.bind(this)}
                             stateAttributes={this.state.attributes}
                             priceSection={true}
@@ -106,7 +92,7 @@ export class Product extends Component {
                         <div
                             className={style.description}
                             dangerouslySetInnerHTML={{
-                                __html: this.state.product.description,
+                                __html: this.props.product.description,
                             }}
                         ></div>
                     </div>
@@ -132,7 +118,4 @@ const mapDispatchToProps = {
         return cartActions.addToCart(product);
     },
 };
-export default compose(
-    withRouter,
-    connect(mapStateToProps, mapDispatchToProps)
-)(Product);
+export default connect(mapStateToProps, mapDispatchToProps)(Product);

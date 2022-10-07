@@ -9,7 +9,6 @@ export class CartProduct extends Component {
     changeAttribute(attrId, value) {
         const payload = {
             cartId: this.props.product.cartId,
-            productId: this.props.product.id,
             attrId,
             value,
         };
