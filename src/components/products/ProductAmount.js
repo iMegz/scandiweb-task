@@ -7,7 +7,7 @@ import style from "./ProductAmount.module.css";
 export class ProductAmount extends Component {
     render() {
         const { incrementAmount, decrementAmount, id } = this.props;
-        const amount = this.props.cart.find((p) => p.id === id)?.amount;
+        const amount = this.props.cart.find((p) => p.cartId === id)?.amount;
         const size = this.props.size || "medium";
         const dir = this.props.dir || "column";
 

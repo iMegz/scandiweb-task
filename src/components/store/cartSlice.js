@@ -17,13 +17,14 @@ const cartSlice = createSlice({
 
         //Increment the amount of product in cart
         incrementAmount(state, { payload }) {
-            const product = state.find((p) => p.id === payload);
+            console.log(payload);
+            const product = state.find((p) => p.cartId === payload);
             product.amount++;
         },
 
         //Decrement the amount of product in cart or remove it
         decrementAmount(state, { payload }) {
-            const index = state.findIndex((p) => p.id === payload);
+            const index = state.findIndex((p) => p.cartId === payload);
             if (state[index].amount === 1) state.splice(index, 1);
             else state[index].amount--;
         },

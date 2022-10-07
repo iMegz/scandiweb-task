@@ -33,7 +33,7 @@ export class CartProduct extends Component {
                     <div style={{ flexGrow: 1 }}></div>
                     <ProductAmount
                         size={mini ? "small" : "medium"}
-                        id={product.id}
+                        id={product.cartId}
                     />
                     <CartGalery
                         full={!mini}
