@@ -31,6 +31,3 @@ body {
     -moz-osx-font-smoothing: grayscale;
     position: relative;
 }
-button:hover {
-    cursor: pointer;
-}
