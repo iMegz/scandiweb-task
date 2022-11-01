@@ -1,0 +1,21 @@
+.swatch {
+    border: 1px solid transparent;
+    background-clip: content-box;
+    display: inline-block;
+    padding: 2px;
+    cursor: pointer;
+}
+
+.swatch:hover,
+.swatch.selected {
+    border-color: var(--base);
+}
+
+.lg {
+    width: 36px;
+    height: 36px;
+}
+.sm {
+    width: 20px;
+    height: 20px;
+}
