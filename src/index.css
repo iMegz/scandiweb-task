@@ -31,3 +31,7 @@ body {
     -moz-osx-font-smoothing: grayscale;
     position: relative;
 }
+.container {
+    width: 85%;
+    margin: auto;
+}

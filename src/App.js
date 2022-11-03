@@ -1,9 +1,76 @@
 import React, { Component } from "react";
+import { connect } from "react-redux";
+import { Navigate, Route, Routes } from "react-router-dom";
+import { getCategories, getCurrencies } from "./config/graphql/queries";
+import { currencyActions } from "./config/redux/currency";
+import LoadingPage from "./pages/Loading/LoadingPage";
+import Navbar from "./shared/components/Navbar/Navbar";
 
 export class App extends Component {
+    constructor() {
+        super();
+        this.state = {
+            categories: [],
+            currencies: [],
+        };
+    }
+
+    componentDidMount() {
+        getCategories().then(({ data }) =>
+            this.setState({ categories: data.categories.map((c) => c.name) })
+        );
+
+        getCurrencies().then(({ data }) => {
+            this.setState({ currencies: data.currencies }, () => {
+                this.props.initCurrency(this.state.currencies[0]);
+            });
+        });
+
+        window.addEventListener("beforeunload", () => {
+            this.props.saveCurrency();
+        });
+    }
+
     render() {
-        return <div>App</div>;
+        const { categories, currencies } = this.state;
+        const loaded = categories.length && currencies.length;
+        return (
+            <div className="container">
+                {!loaded && <LoadingPage />}
+                {loaded && (
+                    <Navbar
+                        currencies={this.state.currencies}
+                        categories={this.state.categories}
+                    />
+                )}
+                {loaded && (
+                    <Routes>
+                        <Route
+                            index
+                            element={
+                                <Navigate to={`/${this.state.categories[0]}`} />
+                            }
+                        ></Route>
+                    </Routes>
+                )}
+            </div>
+        );
     }
 }
+const mapStateToProps = (state) => {
+    return {
+        currency: state.currency.active,
+    };
+};
 
-export default App;
+const mapDispatchToProps = {
+    initCurrency(currency) {
+        return currencyActions.init(currency);
+    },
+
+    saveCurrency() {
+        return currencyActions.save();
+    },
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(App);

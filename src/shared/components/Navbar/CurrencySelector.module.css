@@ -1,0 +1,21 @@
+.currencies {
+    position: absolute;
+    top: 65px;
+    right: 78px;
+    width: 114px;
+    display: flex;
+    flex-direction: column;
+    padding: 12px 0;
+    box-shadow: 0px 4px 35px rgba(168, 172, 176, 0.19);
+    cursor: pointer;
+}
+.currency {
+    font-size: 18px;
+    font-weight: 500;
+    line-height: 29px;
+    padding: 8px 20px;
+}
+.currency:hover,
+.currency.active {
+    background-color: var(--grey);
+}

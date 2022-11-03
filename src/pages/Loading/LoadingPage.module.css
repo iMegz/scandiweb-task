@@ -1,0 +1,28 @@
+.loading-page {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    z-index: 10;
+    background-color: #dedede;
+    display: grid;
+    place-items: center;
+}
+.spiner {
+    width: 50px;
+    height: 50px;
+    border: 3px solid;
+    border-radius: 50%;
+    border-color: var(--base) var(--grey) var(--grey) var(--grey);
+    animation: spin 1s infinite ease-in-out;
+}
+
+@keyframes spin {
+    from {
+        transform: rotateZ(0deg);
+    }
+    to {
+        transform: rotateZ(360deg);
+    }
+}
