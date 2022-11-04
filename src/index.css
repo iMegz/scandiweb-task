@@ -35,3 +35,6 @@ body {
     width: 85%;
     margin: auto;
 }
+main {
+    padding: 50px 0;
+}

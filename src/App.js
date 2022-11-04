@@ -4,6 +4,8 @@ import { Navigate, Route, Routes } from "react-router-dom";
 import { getCategories, getCurrencies } from "./config/graphql/queries";
 import { currencyActions } from "./config/redux/currency";
 import LoadingPage from "./pages/Loading/LoadingPage";
+import ProductsList from "./pages/Products/components/ProductsList";
+import ProductsPage from "./pages/Products/ProductsPage";
 import Navbar from "./shared/components/Navbar/Navbar";
 
 export class App extends Component {
@@ -50,7 +52,10 @@ export class App extends Component {
                             element={
                                 <Navigate to={`/${this.state.categories[0]}`} />
                             }
-                        ></Route>
+                        />
+                        <Route path=":category" element={<ProductsPage />}>
+                            <Route index element={<ProductsList />} />
+                        </Route>
                     </Routes>
                 )}
             </div>

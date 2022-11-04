@@ -3,7 +3,8 @@ import style from "./Button.module.css";
 
 export class Button extends Component {
     render() {
-        let { type, size, selected, disabled, children } = this.props;
+        let { type, size, selected, disabled, children, className } =
+            this.props;
 
         type = type ? style[type] : style["outline"];
         size = size ? style[size] : "";
@@ -11,7 +12,9 @@ export class Button extends Component {
         disabled = disabled ? style["disabled"] : "";
 
         //Style the btn based on props
-        const className = `${style.btn} ${type} ${size} ${selected} ${disabled}`;
+        const classes = `${className || ""} ${
+            style.btn
+        } ${type} ${size} ${selected} ${disabled}`;
 
         //Pass all normal props to the button so user gain full acces to the button
         const props = {
@@ -23,7 +26,7 @@ export class Button extends Component {
         };
 
         return (
-            <button {...props} className={className}>
+            <button {...props} className={classes}>
                 {children}
             </button>
         );

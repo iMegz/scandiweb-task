@@ -1,0 +1,38 @@
+.temp-product-card {
+    width: 386px;
+    height: 444px;
+    padding: 16px;
+    display: flex;
+    flex-direction: column;
+    animation: loading 1s infinite ease-in-out;
+}
+.temp-product-image {
+    width: 100%;
+    height: 354px;
+    margin-bottom: 20px;
+}
+.temp-product-title {
+    height: 29px;
+    width: 100%;
+    margin-bottom: 4px;
+}
+.temp-product-price {
+    height: 29px;
+    width: 50%;
+}
+
+.temp-product-card div {
+    background-color: var(--grey);
+}
+
+@keyframes loading {
+    0% {
+        opacity: 1;
+    }
+    50% {
+        opacity: 0.6;
+    }
+    100% {
+        opacity: 1;
+    }
+}

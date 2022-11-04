@@ -17,3 +17,9 @@ export function localCart(cart) {
     if (cart) localStorage.setItem("cart", JSON.stringify(cart));
     return JSON.parse(localStorage.getItem("cart"));
 }
+
+export function calcPrice(prices = [], currency = "") {
+    return prices
+        .find((price) => price.currency.symbol === currency)
+        .amount.toFixed(2);
+}

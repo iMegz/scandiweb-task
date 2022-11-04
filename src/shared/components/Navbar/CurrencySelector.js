@@ -32,7 +32,7 @@ export class CurrencySelector extends Component {
                     type="transparent"
                     onClick={this.toggleShow.bind(this)}
                 >
-                    {this.props.active}{" "}
+                    {this.props.active} &nbsp;
                     <Arrow dir={this.state.show ? "up" : "down"} />
                 </Button>
                 {this.state.show && (

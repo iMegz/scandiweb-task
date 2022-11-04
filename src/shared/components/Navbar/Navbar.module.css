@@ -37,6 +37,7 @@
 }
 .actions {
     justify-content: end;
+    gap: 18px;
 }
 
 .red path {
