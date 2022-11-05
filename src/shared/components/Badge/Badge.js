@@ -14,9 +14,9 @@ export class Badge extends Component {
         return size ? <div {...props}>{size}</div> : <></>;
     }
 }
-const mapStateToProps = (state) => {
+const mapStateToProps = ({ cart }) => {
     return {
-        size: state.cart.reduce((prev, curr) => prev + curr.amount, 0),
+        size: cart.reduce((prev, curr) => prev + curr.amount, 0),
     };
 };
 export default connect(mapStateToProps)(Badge);

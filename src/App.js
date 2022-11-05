@@ -4,6 +4,7 @@ import { Navigate, Route, Routes } from "react-router-dom";
 import { getCategories, getCurrencies } from "./config/graphql/queries";
 import { cartActions } from "./config/redux/cart";
 import { currencyActions } from "./config/redux/currency";
+import CartPage from "./pages/Cart/CartPage";
 import LoadingPage from "./pages/Loading/LoadingPage";
 import Product from "./pages/Products/components/Product/Product";
 import ProductsList from "./pages/Products/components/ProductsList/ProductsList";
@@ -56,6 +57,7 @@ export class App extends Component {
                                 <Navigate to={`/${this.state.categories[0]}`} />
                             }
                         />
+                        <Route path="cart" element={<CartPage />} />
                         <Route path=":category" element={<ProductsPage />}>
                             <Route index element={<ProductsList />} />
                             <Route path=":product" element={<Product />} />

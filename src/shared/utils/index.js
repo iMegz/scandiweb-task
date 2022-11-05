@@ -23,3 +23,19 @@ export function calcPrice(prices = [], currency = "") {
         .find((price) => price.currency.symbol === currency)
         .amount.toFixed(2);
 }
+
+export function deepCopy(data = {}) {
+    return JSON.parse(JSON.stringify(data));
+}
+
+/**
+ * Conver normal product to cart product
+ * @param {Object} product - Normal product
+ */
+export function cartProduct(product = {}) {
+    const attributes = product.attributes.map(({ id, selected }) => {
+        return { id, selected };
+    });
+    const result = { id: product.id, attributes };
+    return result;
+}

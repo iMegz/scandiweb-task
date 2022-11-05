@@ -1,0 +1,11 @@
+.h1 {
+    font-size: 32px;
+    font-weight: 700;
+    line-height: 40px;
+    text-transform: uppercase;
+    margin-bottom: 23px;
+}
+.hr {
+    margin: 32px 0;
+    border-color: var(--grey);
+}

@@ -1,0 +1,31 @@
+.mini-gallery {
+    position: relative;
+}
+.change-img-btns {
+    display: flex;
+    gap: 8px;
+    position: absolute;
+    bottom: 16px;
+    right: 16px;
+}
+.change-img-btn {
+    width: 24px;
+    height: 24px;
+    display: grid;
+    place-content: center;
+    padding: 0;
+    background-color: var(--black);
+}
+.change-img-btn > i {
+    border-color: white;
+}
+.change-img-btn:hover {
+    background-color: white !important;
+}
+.change-img-btn:hover > i {
+    border-color: var(--black);
+}
+.mini-img {
+    width: 200px;
+    object-fit: contain;
+}

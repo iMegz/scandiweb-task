@@ -8,7 +8,11 @@ import style from "./Product.module.css";
 import ProductAttributes from "../ProductAttributes/ProductAttributes";
 import { compose } from "@reduxjs/toolkit";
 import { connect } from "react-redux";
-import { calcPrice } from "../../../../shared/utils/index";
+import {
+    calcPrice,
+    cartProduct,
+    deepCopy,
+} from "../../../../shared/utils/index";
 import Button from "../../../../shared/components/Button/Button";
 import parse from "html-react-parser";
 import { sanitize } from "dompurify";
@@ -26,7 +30,7 @@ export class Product extends Component {
         const id = this.props.params.product;
         getProduct(id).then(({ data }) => {
             //Deep copy the result to be able to modify it
-            const product = JSON.parse(JSON.stringify(data.product));
+            const product = deepCopy(data.product);
             if (product) {
                 product.attributes.forEach((attr) => (attr.selected = 0));
             }
@@ -34,16 +38,7 @@ export class Product extends Component {
         });
     }
     addToCart() {
-        const attributes = this.state.product.attributes.map(
-            ({ id, selected }) => {
-                return { id, selected };
-            }
-        );
-        const product = {
-            id: this.state.product.id,
-            attributes,
-        };
-        console.log(product);
+        const product = cartProduct(this.state.product);
         this.props.addToCart(product);
     }
     changeAttribute(id, value) {

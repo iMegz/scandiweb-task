@@ -37,7 +37,9 @@ export class Navbar extends Component {
                 <div className={style["actions"]}>
                     <CurrencySelector currencies={this.props.currencies} />
                     <Button type="transparent">
-                        <CartIcon />
+                        <NavLink to="cart">
+                            <CartIcon />
+                        </NavLink>
                         <Badge className={style["badge"]} />
                     </Button>
                 </div>

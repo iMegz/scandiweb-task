@@ -8,7 +8,7 @@ export class ProductAttributes extends Component {
         if (!this.props.disabled) this.props.change(id, i);
     }
     render() {
-        const { attributes, disabled } = this.props;
+        const { attributes, disabled, size } = this.props;
 
         return (
             <div className={style["attributes-list"]}>
@@ -18,7 +18,7 @@ export class ProductAttributes extends Component {
                             const selected = i === attr.selected;
                             return (
                                 <Swatch
-                                    size="lg"
+                                    size={size || "lg"}
                                     selected={selected}
                                     color={item.value}
                                     key={item.id}
@@ -43,7 +43,7 @@ export class ProductAttributes extends Component {
                             return (
                                 <Button
                                     type="outline"
-                                    size="md"
+                                    size={size || "md"}
                                     selected={selected}
                                     key={item.id}
                                     disabled={disabled}
