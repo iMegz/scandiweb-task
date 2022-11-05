@@ -1,10 +1,10 @@
 import React, { Component } from "react";
-import ProductCard from "./ProductCard";
-import TempProductCard from "./TempProductCard";
-import notFoundImg from "../../../assets/images/productNotFound.svg";
+import ProductCard from "../ProductCard/ProductCard";
+import TempProductCard from "../TempProductCard/TempProductCard";
 import style from "./ProductsList.module.css";
-import { getProductsByCategory } from "../../../config/graphql/queries";
-import withRouter from "../../../shared/components/HOC/withRouter";
+import { getProductsByCategory } from "../../../../config/graphql/queries";
+import withRouter from "../../../../shared/components/HOC/withRouter";
+import NotFound from "../../../../shared/components/NotFound/NotFound";
 
 export class ProductsList extends Component {
     constructor() {
@@ -57,15 +57,9 @@ export class ProductsList extends Component {
             );
         } else if (!products.length) {
             //No products found
-            return this.wrapper(
-                <div className={style["not-found"]}>
-                    <img src={notFoundImg} alt="Product not found" />
-                    <span>
-                        We have searched 404 times but found no products in the
-                        {` ${this.category}`} category
-                    </span>
-                </div>
-            );
+            const msg = `We have searched 404 times but found no products in the
+             ${this.category} category`;
+            return this.wrapper(<NotFound msg={msg} />);
         } else {
             //Found products
             return this.wrapper(

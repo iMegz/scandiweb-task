@@ -2,9 +2,11 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import { Navigate, Route, Routes } from "react-router-dom";
 import { getCategories, getCurrencies } from "./config/graphql/queries";
+import { cartActions } from "./config/redux/cart";
 import { currencyActions } from "./config/redux/currency";
 import LoadingPage from "./pages/Loading/LoadingPage";
-import ProductsList from "./pages/Products/components/ProductsList";
+import Product from "./pages/Products/components/Product/Product";
+import ProductsList from "./pages/Products/components/ProductsList/ProductsList";
 import ProductsPage from "./pages/Products/ProductsPage";
 import Navbar from "./shared/components/Navbar/Navbar";
 
@@ -30,6 +32,7 @@ export class App extends Component {
 
         window.addEventListener("beforeunload", () => {
             this.props.saveCurrency();
+            this.props.saveCart();
         });
     }
 
@@ -55,6 +58,7 @@ export class App extends Component {
                         />
                         <Route path=":category" element={<ProductsPage />}>
                             <Route index element={<ProductsList />} />
+                            <Route path=":product" element={<Product />} />
                         </Route>
                     </Routes>
                 )}
@@ -75,6 +79,10 @@ const mapDispatchToProps = {
 
     saveCurrency() {
         return currencyActions.save();
+    },
+
+    saveCart() {
+        return cartActions.save();
     },
 };
 

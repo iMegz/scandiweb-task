@@ -1,16 +1,18 @@
 .swatch {
-    border: 1px solid transparent;
+    border: 1px solid var(--grey);
     background-clip: content-box;
     display: inline-block;
     padding: 2px;
     cursor: pointer;
 }
 
-.swatch:hover,
+.swatch:not(.disabled):hover,
 .swatch.selected {
     border-color: var(--base);
 }
-
+.swatch.disabled {
+    cursor: default;
+}
 .lg {
     width: 36px;
     height: 36px;

@@ -1,8 +1,8 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import Button from "../../../shared/components/Button/Button";
-import { calcPrice } from "../../../shared/utils";
-import CartIcon from "../../../shared/components/CartIcon/CartIcon";
+import Button from "../../../../shared/components/Button/Button";
+import { calcPrice } from "../../../../shared/utils";
+import CartIcon from "../../../../shared/components/CartIcon/CartIcon";
 import style from "./ProductCard.module.css";
 
 export class ProductCard extends Component {

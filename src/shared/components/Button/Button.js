@@ -12,9 +12,9 @@ export class Button extends Component {
         disabled = disabled ? style["disabled"] : "";
 
         //Style the btn based on props
-        const classes = `${className || ""} ${
-            style.btn
-        } ${type} ${size} ${selected} ${disabled}`;
+        const classes = `${style.btn} ${type} ${size} ${selected} ${disabled} ${
+            className || ""
+        } `;
 
         //Pass all normal props to the button so user gain full acces to the button
         const props = {

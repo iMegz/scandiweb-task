@@ -1,0 +1,10 @@
+.attributes-list {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    padding: 36px 0;
+}
+.attribute-values {
+    display: flex;
+    gap: 6px;
+}

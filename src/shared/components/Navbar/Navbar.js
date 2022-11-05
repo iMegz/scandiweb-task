@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { NavLink } from "react-router-dom";
 import logo from "../../../assets/images/logo.svg";
+import Badge from "../Badge/Badge";
 import Button from "../Button/Button";
 import CartIcon from "../CartIcon/CartIcon";
 import CurrencySelector from "./CurrencySelector";
@@ -37,6 +38,7 @@ export class Navbar extends Component {
                     <CurrencySelector currencies={this.props.currencies} />
                     <Button type="transparent">
                         <CartIcon />
+                        <Badge className={style["badge"]} />
                     </Button>
                 </div>
             </nav>

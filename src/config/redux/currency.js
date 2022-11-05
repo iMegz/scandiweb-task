@@ -9,16 +9,16 @@ const slice = createSlice({
     name: "currency",
     initialState,
     reducers: {
-        init(state, { payload }) {
-            state.active = localCurrency() || payload;
+        init(currency, { payload }) {
+            currency.active = localCurrency() || payload;
         },
 
-        setActive(state, { payload }) {
-            state.active = payload;
+        setActive(currency, { payload }) {
+            currency.active = payload;
         },
 
-        save(state) {
-            localCurrency(state.active);
+        save(currency) {
+            localCurrency(currency.active);
         },
     },
 });
