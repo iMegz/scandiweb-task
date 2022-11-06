@@ -2,20 +2,18 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import { cartActions } from "../../../../config/redux/cart";
 import Button from "../../../../shared/components/Button/Button";
-import { calcPrice, cartProduct } from "../../../../shared/utils";
+import { calcPrice } from "../../../../shared/utils";
 import ProductAttributes from "../../../Products/components/ProductAttributes/ProductAttributes";
 import MiniGallery from "../MiniGallery/MiniGallery";
 import style from "./CartCard.module.css";
 
 export class CartCard extends Component {
     increment() {
-        const product = cartProduct(this.props.product);
-        this.props.increment(product);
+        this.props.increment(this.props.product);
     }
 
     decrement() {
-        const product = cartProduct(this.props.product);
-        this.props.decrement(product);
+        this.props.decrement(this.props.product);
     }
 
     render() {
@@ -23,7 +21,6 @@ export class CartCard extends Component {
             this.props.product;
         const currency = this.props.currency;
         const price = calcPrice(prices, currency);
-
         return (
             <div className={style["cart-card"]}>
                 <div className={style["cart-card-info"]}>

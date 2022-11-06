@@ -10,6 +10,8 @@ import Product from "./pages/Products/components/Product/Product";
 import ProductsList from "./pages/Products/components/ProductsList/ProductsList";
 import ProductsPage from "./pages/Products/ProductsPage";
 import Navbar from "./shared/components/Navbar/Navbar";
+import { localCart } from "./shared/utils";
+import { decompressCart } from "./shared/utils/cart";
 
 export class App extends Component {
     constructor() {
@@ -17,6 +19,7 @@ export class App extends Component {
         this.state = {
             categories: [],
             currencies: [],
+            cartLoaded: false,
         };
     }
 
@@ -31,6 +34,11 @@ export class App extends Component {
             });
         });
 
+        decompressCart(localCart()).then((cart) => {
+            this.props.initCart(cart);
+            this.setState({ cartLoaded: true });
+        });
+
         window.addEventListener("beforeunload", () => {
             this.props.saveCurrency();
             this.props.saveCart();
@@ -38,8 +46,8 @@ export class App extends Component {
     }
 
     render() {
-        const { categories, currencies } = this.state;
-        const loaded = categories.length && currencies.length;
+        const { categories, currencies, cartLoaded } = this.state;
+        const loaded = categories.length && currencies.length && cartLoaded;
         return (
             <div className="container">
                 {!loaded && <LoadingPage />}
@@ -71,12 +79,17 @@ export class App extends Component {
 const mapStateToProps = (state) => {
     return {
         currency: state.currency.active,
+        cart: state.cart,
     };
 };
 
 const mapDispatchToProps = {
     initCurrency(currency) {
         return currencyActions.init(currency);
+    },
+
+    initCart(cart) {
+        return cartActions.init(cart);
     },
 
     saveCurrency() {

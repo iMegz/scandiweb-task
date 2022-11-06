@@ -10,7 +10,7 @@ const slice = createSlice({
     initialState,
     reducers: {
         init(currency, { payload }) {
-            currency.active = localCurrency() || payload;
+            currency.active = localCurrency() || payload.symbol;
         },
 
         setActive(currency, { payload }) {

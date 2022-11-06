@@ -1,5 +1,5 @@
 /**
- * Save active currency to localstorage
+ * Save active currency to localstorage and return it
  * @param {String} currency
  * @returns Active Currency
  */
@@ -9,7 +9,7 @@ export function localCurrency(currency) {
 }
 
 /**
- * Save cart to localstorage
+ * Save cart to localstorage and return it
  * @param {[]} cart
  * @returns Cart
  */
@@ -26,16 +26,4 @@ export function calcPrice(prices = [], currency = "") {
 
 export function deepCopy(data = {}) {
     return JSON.parse(JSON.stringify(data));
-}
-
-/**
- * Conver normal product to cart product
- * @param {Object} product - Normal product
- */
-export function cartProduct(product = {}) {
-    const attributes = product.attributes.map(({ id, selected }) => {
-        return { id, selected };
-    });
-    const result = { id: product.id, attributes };
-    return result;
 }

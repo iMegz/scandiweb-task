@@ -8,11 +8,7 @@ import style from "./Product.module.css";
 import ProductAttributes from "../ProductAttributes/ProductAttributes";
 import { compose } from "@reduxjs/toolkit";
 import { connect } from "react-redux";
-import {
-    calcPrice,
-    cartProduct,
-    deepCopy,
-} from "../../../../shared/utils/index";
+import { calcPrice, deepCopy } from "../../../../shared/utils/index";
 import Button from "../../../../shared/components/Button/Button";
 import parse from "html-react-parser";
 import { sanitize } from "dompurify";
@@ -37,10 +33,13 @@ export class Product extends Component {
             this.setState({ product: product || undefined });
         });
     }
+
     addToCart() {
-        const product = cartProduct(this.state.product);
-        this.props.addToCart(product);
+        //I am not sure why but after adding state product to cart, changeAttribute fails
+        //So I sent only a deep copy of it
+        this.props.addToCart(deepCopy(this.state.product));
     }
+
     changeAttribute(id, value) {
         const product = this.state.product;
         const attributes = product.attributes.map((attr) => {

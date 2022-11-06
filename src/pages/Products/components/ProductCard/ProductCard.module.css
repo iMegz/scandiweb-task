@@ -31,8 +31,8 @@
 }
 
 .product-image {
-    width: 100%;
-    height: 354px;
+    width: auto;
+    height: 330px;
     object-fit: contain;
 }
 .product-title {

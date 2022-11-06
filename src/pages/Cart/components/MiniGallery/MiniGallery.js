@@ -7,7 +7,6 @@ export class MiniGallery extends Component {
     constructor(props) {
         super(props);
         this.length = props.gallery.length;
-        console.log(this.length);
         this.state = { index: 0 };
     }
     next() {
@@ -19,7 +18,6 @@ export class MiniGallery extends Component {
         this.setState({ index });
     }
     render() {
-        console.log(this.state.index);
         const { gallery, title } = this.props;
         return (
             <div className={style["mini-gallery"]}>

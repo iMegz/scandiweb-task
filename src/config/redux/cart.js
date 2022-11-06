@@ -1,14 +1,15 @@
 import { createSlice } from "@reduxjs/toolkit";
 import { localCart } from "../../shared/utils";
+import { compressCart } from "../../shared/utils/cart";
 
-const initialState = localCart() || [];
+const initialState = [];
 
 const slice = createSlice({
     name: "cart",
     initialState,
     reducers: {
         init(cart, { payload }) {
-            cart = localCart() || payload;
+            return [...payload];
         },
 
         add(cart, { payload }) {
@@ -26,7 +27,6 @@ const slice = createSlice({
                 }
                 return false;
             });
-
             if (inCart) inCart.amount++;
             else {
                 payload.amount = 1;
@@ -57,7 +57,7 @@ const slice = createSlice({
         },
 
         save(cart) {
-            localCart(cart);
+            localCart(compressCart(cart));
         },
     },
 });
