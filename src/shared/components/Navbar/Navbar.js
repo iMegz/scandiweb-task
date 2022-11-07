@@ -4,7 +4,7 @@ import logo from "../../../assets/images/logo.svg";
 import Badge from "../Badge/Badge";
 import Button from "../Button/Button";
 import CartIcon from "../CartIcon/CartIcon";
-import CurrencySelector from "./CurrencySelector";
+import CurrencySelector from "./CurrencySelector/CurrencySelector";
 import style from "./Navbar.module.css";
 
 export class Navbar extends Component {

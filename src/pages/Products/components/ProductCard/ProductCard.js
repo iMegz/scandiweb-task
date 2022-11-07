@@ -1,18 +1,21 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
+import { cartActions } from "../../../../config/redux/cart";
 import Button from "../../../../shared/components/Button/Button";
-import { calcPrice } from "../../../../shared/utils";
+import { calcPrice, deepCopy } from "../../../../shared/utils";
 import CartIcon from "../../../../shared/components/CartIcon/CartIcon";
 import style from "./ProductCard.module.css";
 
 export class ProductCard extends Component {
-    showAddToCartModal(e) {
+    addToCart(e) {
         e.stopPropagation();
-        console.log("Modal");
+        const product = deepCopy(this.props.product);
+        product.attributes.forEach((attr) => (attr.selected = 0));
+        this.props.addToCart(product);
     }
 
     render() {
-        const { brand, name, inStock, prices, gallery } = this.props;
+        const { brand, name, inStock, prices, gallery } = this.props.product;
 
         const title = `${brand} ${name}`;
         const outOfStock = inStock ? "" : style["out-of-stock"];
@@ -33,7 +36,7 @@ export class ProductCard extends Component {
                     className={style["product-price"]}
                 >{`${this.props.currency} ${price}`}</h3>
                 <Button
-                    onClick={this.showAddToCartModal.bind(this)}
+                    onClick={this.addToCart.bind(this)}
                     type="round"
                     className={style["add-to-cart-btn"]}
                 >
@@ -50,4 +53,10 @@ const mapStateToProps = (state) => {
     };
 };
 
-export default connect(mapStateToProps)(ProductCard);
+const mapDispatchToProps = {
+    addToCart(product) {
+        return cartActions.add(product);
+    },
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(ProductCard);

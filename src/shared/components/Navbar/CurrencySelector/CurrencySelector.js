@@ -1,9 +1,9 @@
 import React, { Component, Fragment } from "react";
 import { connect } from "react-redux";
-import { currencyActions } from "../../../config/redux/currency";
-import Arrow from "../Arrow/Arrow";
-import Button from "../Button/Button";
-import Dropdown from "../Dropdown/Dropdown";
+import { currencyActions } from "../../../../config/redux/currency";
+import Arrow from "../../Arrow/Arrow";
+import Button from "../../Button/Button";
+import Dropdown from "../../Dropdown/Dropdown";
 import style from "./CurrencySelector.module.css";
 
 export class CurrencySelector extends Component {
@@ -38,7 +38,6 @@ export class CurrencySelector extends Component {
                 {this.state.show && (
                     <Dropdown
                         className={style["currencies"]}
-                        btnRef={this.btnRef}
                         onClickOutside={this.toggleShow.bind(this)}
                     >
                         <div>

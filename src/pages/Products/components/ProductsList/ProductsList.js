@@ -72,7 +72,7 @@ export class ProductsList extends Component {
                                     product.id
                                 )}
                                 key={product.id}
-                                {...product}
+                                product={product}
                             />
                         );
                     })}
