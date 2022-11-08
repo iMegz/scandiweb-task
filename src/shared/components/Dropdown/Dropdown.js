@@ -8,16 +8,21 @@ export class Dropdown extends Component {
     }
 
     componentDidMount() {
-        document.addEventListener("mousedown", this.onClickOutside);
+        document.addEventListener("mouseup", this.onClickOutside);
     }
 
     componentWillUnmount() {
-        document.removeEventListener("mousedown", this.onClickOutside);
+        document.removeEventListener("mouseup", this.onClickOutside);
     }
 
     onClickOutside(event) {
+        //Outside the dropdown
         if (this.ref && !this.ref.current.contains(event.target)) {
-            this.props.onClickOutside(event.target);
+            const btnRef = this.props.btnRef.current;
+
+            //And not on the button
+            if (!(btnRef && btnRef.contains(event.target)))
+                this.props.onClickOutside();
         }
     }
     render() {

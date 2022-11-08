@@ -3,7 +3,7 @@ import style from "./Button.module.css";
 
 export class Button extends Component {
     render() {
-        let { type, size, selected, disabled, children, className } =
+        let { type, size, selected, disabled, children, className, bref } =
             this.props;
 
         type = type ? style[type] : style["outline"];
@@ -23,14 +23,17 @@ export class Button extends Component {
             size: undefined,
             selected: undefined,
             disabled: undefined,
+            bref: undefined,
         };
 
         return (
-            <button {...props} className={classes}>
+            <button {...props} className={classes} ref={bref}>
                 {children}
             </button>
         );
     }
 }
 
-export default Button;
+export default React.forwardRef((props, ref) => (
+    <Button bref={ref} {...props} />
+));

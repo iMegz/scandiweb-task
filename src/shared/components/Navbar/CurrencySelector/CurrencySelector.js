@@ -9,19 +9,19 @@ import style from "./CurrencySelector.module.css";
 export class CurrencySelector extends Component {
     constructor() {
         super();
+        this.ref = React.createRef();
         this.state = {
             show: false,
         };
     }
 
-    toggleShow(element) {
-        if (element?.id === "currencyBtn") return;
+    toggle() {
         this.setState({ show: !this.state.show });
     }
 
     setCurrency(currency) {
         this.props.setActive(currency);
-        this.toggleShow();
+        this.toggle();
     }
 
     render() {
@@ -30,7 +30,8 @@ export class CurrencySelector extends Component {
                 <Button
                     id="currencyBtn"
                     type="transparent"
-                    onClick={this.toggleShow.bind(this)}
+                    ref={this.ref}
+                    onClick={this.toggle.bind(this)}
                 >
                     {this.props.active} &nbsp;
                     <Arrow dir={this.state.show ? "up" : "down"} />
@@ -38,7 +39,8 @@ export class CurrencySelector extends Component {
                 {this.state.show && (
                     <Dropdown
                         className={style["currencies"]}
-                        onClickOutside={this.toggleShow.bind(this)}
+                        onClickOutside={this.toggle.bind(this)}
+                        btnRef={this.ref}
                     >
                         <div>
                             <ul>
