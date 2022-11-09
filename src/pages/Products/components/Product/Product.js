@@ -10,9 +10,8 @@ import { compose } from "@reduxjs/toolkit";
 import { connect } from "react-redux";
 import { calcPrice, deepCopy } from "../../../../shared/utils/index";
 import Button from "../../../../shared/components/Button/Button";
-import parse from "html-react-parser";
-import { sanitize } from "dompurify";
 import { cartActions } from "../../../../config/redux/cart";
+import { Markup } from "interweave";
 
 export class Product extends Component {
     constructor() {
@@ -104,7 +103,7 @@ export class Product extends Component {
                                 OUT OF STOCK
                             </span>
                         )}
-                        {parse(sanitize(description))}
+                        <Markup content={description} />
                     </div>
                 </main>
             );
