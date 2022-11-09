@@ -56,15 +56,13 @@ export class MiniCart extends Component {
                         btnRef={this.ref}
                     >
                         <Overlay />
-                        <div className={style["cart-content"]}>
-                            <span className={style["my-bag"]}>
-                                My Bag,
-                                <span className={style["items-count"]}>
-                                    {size
-                                        ? ` ${size} ${items}`
-                                        : ` No ${items}`}
-                                </span>
+                        <span className={style["my-bag"]}>
+                            My Bag,
+                            <span className={style["items-count"]}>
+                                {size ? ` ${size} ${items}` : ` No ${items}`}
                             </span>
+                        </span>
+                        <div className={style["cart-content"]}>
                             {cart.map((product, i) => (
                                 <React.Fragment key={i}>
                                     <MiniCartCard

@@ -6,19 +6,18 @@
     padding: 32px 16px 32px 16px;
     background-color: white;
     display: flex;
-    gap: 30px;
+    gap: 28px;
     flex-direction: column;
     box-shadow: 0px 4px 35px rgba(168, 172, 176, 0.19);
-    cursor: pointer;
     z-index: 10;
 }
 .cart-content {
     display: flex;
     gap: 40px;
     flex-direction: column;
-    max-height: calc(100vh - 320px);
+    max-height: calc(100vh - 330px);
     overflow-y: scroll;
-    padding: 10px 0;
+    padding: 5px 0;
 }
 .cart-content::-webkit-scrollbar {
     width: 2px;

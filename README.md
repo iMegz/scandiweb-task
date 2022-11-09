@@ -1,70 +1,69 @@
-# Getting Started with Create React App
+# Scandiweb - Entry React developer TEST
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+This is the solution for the Entry React developer TEST by scandiweb for the [https://careers.scandiweb.com/jobs/1479593-internship-react-developer-to-become-full-stack-developer](https://careers.scandiweb.com/jobs/1479593-internship-react-developer-to-become-full-stack-developer)
 
-## Available Scripts
+## Table of contents
 
-In the project directory, you can run:
+-   [Overview](#overview)
+    -   [The challenge](#the-challenge)
+    -   [Screenshots](#screenshots)
+    -   [Links](#links)
+-   [My process](#my-process)
+    -   [Built with](#built-with)
+    -   [Useful resources](#useful-resources)
+-   [Author](#author)
 
-### `npm start`
+## Overview
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+### The challenge
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+-   The E-store should fetch data from an API using grapQL
+-   It should include 3 main pages :
+    -   PLP - Product listing page, a.k.a. Category page
+    -   PDP - Product description page, a.k.a. Product page
+    -   Cart page + Cart overlay (minicart)
+-   Users should be able to :
+    -   Switch between different currencies
+    -   Added the same product with different attributes
 
-### `npm test`
+### Screenshots
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+Product listing page :
+<img alt="Product listing page" src="https://i.ibb.co/z71hywG/PLP-ALL.png" height="400" />
 
-### `npm run build`
+Product page :
+<img alt="Product page" src="https://i.ibb.co/tJV98Rd/product.png" height="400" />
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+Currency selector :
+<img alt="Currency selector" src="https://i.ibb.co/ZJJ5Krj/currency.png" height="400" />
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+Cart page :
+<img alt="Cart page" src="https://i.ibb.co/98KhtPc/cart.png" height="400" />
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+Cart overlay :
+<img alt="Cart overlay" src="https://i.ibb.co/yQVxwTm/cart-Overlay.png" height="400" />
 
-### `npm run eject`
+### Links
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+-   [API](https://github.com/scandiweb/junior-react-endpoint)
+-   [Figma design](<https://www.figma.com/file/MSyCAqVy1UgNap0pvqH6H3/Junior-Frontend-Test-Designs-(Public)?node-id=0%3A1>)
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+## My process
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+### Built with
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+-   ReactJs
+-   Redux Toolkit
+-   React Router Dom
+-   Apollo Client
 
-## Learn More
+### Useful resources
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+-   [React Js](https://reactjs.org/)
+-   [Redux Toolkit](https://redux-toolkit.js.org/introduction/getting-started)
+-   [React Router v6.4](https://reactrouter.com/en/6.4.3)
+-   [Apolo Client](https://www.apollographql.com/docs/react/)
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+### Author
 
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+-   Linkedin - [Ahmed Magdi](http://linkedin.com/in/imegz)
