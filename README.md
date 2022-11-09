@@ -28,19 +28,19 @@ This is the solution for the Entry React developer TEST by scandiweb for the [ht
 
 ### Screenshots
 
-Product listing page :
+Product listing page : <br>
 <img alt="Product listing page" src="https://i.ibb.co/z71hywG/PLP-ALL.png" height="400" />
 
-Product page :
+Product page : <br>
 <img alt="Product page" src="https://i.ibb.co/tJV98Rd/product.png" height="400" />
 
-Currency selector :
+Currency selector : <br>
 <img alt="Currency selector" src="https://i.ibb.co/ZJJ5Krj/currency.png" height="400" />
 
-Cart page :
+Cart page : <br>
 <img alt="Cart page" src="https://i.ibb.co/98KhtPc/cart.png" height="400" />
 
-Cart overlay :
+Cart overlay : <br>
 <img alt="Cart overlay" src="https://i.ibb.co/yQVxwTm/cart-Overlay.png" height="400" />
 
 ### Links
