@@ -8,6 +8,7 @@ import { getProduct } from "../../config/graphql/queries";
  */
 export function decompressCart(cart) {
     //Get unique IDs (there may be 2 products with same id but different attributes)
+    if (!cart) return Promise.resolve([]);
     const productsIDs = [...new Set(cart.map(({ id }) => id))];
 
     if (productsIDs.length) {
