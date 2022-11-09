@@ -9,9 +9,9 @@ export class ProductAttributes extends Component {
     }
     render() {
         const { attributes, disabled, size } = this.props;
-
+        const mini = size === "sm" ? style["mini"] : "";
         return (
-            <div className={style["attributes-list"]}>
+            <div className={`${style["attributes-list"]} ${mini}`}>
                 {attributes.map((attr) => {
                     if (attr.type === "swatch") {
                         const items = attr.items.map((item, i) => {
@@ -29,7 +29,13 @@ export class ProductAttributes extends Component {
                         });
                         return (
                             <div key={attr.id}>
-                                <span className="product-attribute-name">
+                                <span
+                                    className={
+                                        mini
+                                            ? style["mini-attribute-name"]
+                                            : "product-attribute-name"
+                                    }
+                                >
                                     {attr.name} :
                                 </span>
                                 <div className={style["attribute-values"]}>
@@ -55,7 +61,13 @@ export class ProductAttributes extends Component {
                         });
                         return (
                             <div key={attr.id}>
-                                <span className="product-attribute-name">
+                                <span
+                                    className={
+                                        mini
+                                            ? style["mini-attribute-name"]
+                                            : "product-attribute-name"
+                                    }
+                                >
                                     {attr.name} :
                                 </span>
                                 <div className={style["attribute-values"]}>

@@ -1,9 +1,7 @@
 import React, { Component } from "react";
 import { NavLink } from "react-router-dom";
 import logo from "../../../assets/images/logo.svg";
-import Badge from "../Badge/Badge";
-import Button from "../Button/Button";
-import CartIcon from "../CartIcon/CartIcon";
+import MiniCart from "../../../pages/Cart/components/MiniCart/MiniCart";
 import CurrencySelector from "./CurrencySelector/CurrencySelector";
 import style from "./Navbar.module.css";
 
@@ -36,12 +34,7 @@ export class Navbar extends Component {
                 </div>
                 <div className={style["actions"]}>
                     <CurrencySelector currencies={this.props.currencies} />
-                    <Button type="transparent">
-                        <NavLink to="cart">
-                            <CartIcon />
-                        </NavLink>
-                        <Badge className={style["badge"]} />
-                    </Button>
+                    <MiniCart />
                 </div>
             </nav>
         );

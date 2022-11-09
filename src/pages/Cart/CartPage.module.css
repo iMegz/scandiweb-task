@@ -9,3 +9,17 @@
     margin: 32px 0;
     border-color: var(--grey);
 }
+.summary-table {
+    margin-bottom: 20px;
+}
+.summary-table td:first-child {
+    font-size: 24px;
+    font-weight: 400;
+    line-height: 28px;
+}
+
+.summary-table td:last-child {
+    font-size: 24px;
+    font-weight: 700;
+    line-height: 28px;
+}

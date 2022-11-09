@@ -4,7 +4,15 @@
     gap: 24px;
     padding: 36px 0;
 }
+.attributes-list.mini {
+    padding: 0;
+}
 .attribute-values {
     display: flex;
     gap: 6px;
+}
+.mini-attribute-name {
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 16px;
 }

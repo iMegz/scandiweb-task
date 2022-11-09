@@ -18,10 +18,11 @@ export class MiniGallery extends Component {
         this.setState({ index });
     }
     render() {
-        const { gallery, title } = this.props;
+        const { gallery, title, miniCart, disabled } = this.props;
+
         return (
             <div className={style["mini-gallery"]}>
-                {this.length > 1 && (
+                {this.length > 1 && !disabled && (
                     <div className={style["change-img-btns"]}>
                         <Button
                             type="outline"
@@ -45,7 +46,9 @@ export class MiniGallery extends Component {
                 <img
                     src={gallery[this.state.index]}
                     alt={title}
-                    className={style["mini-img"]}
+                    className={`${style["mini-img"]} ${
+                        miniCart ? style["mini-cart"] : ""
+                    }`}
                 />
             </div>
         );

@@ -1,4 +1,4 @@
-import React, { Component, Fragment } from "react";
+import React, { Component } from "react";
 import { connect } from "react-redux";
 import { currencyActions } from "../../../../config/redux/currency";
 import Arrow from "../../Arrow/Arrow";
@@ -28,7 +28,6 @@ export class CurrencySelector extends Component {
         return (
             <>
                 <Button
-                    id="currencyBtn"
                     type="transparent"
                     ref={this.ref}
                     onClick={this.toggle.bind(this)}

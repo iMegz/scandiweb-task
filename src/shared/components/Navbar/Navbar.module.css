@@ -40,8 +40,3 @@
     justify-content: end;
     gap: 18px;
 }
-.badge {
-    position: absolute;
-    top: -8px;
-    right: -18px;
-}
